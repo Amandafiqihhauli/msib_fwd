@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 JS</title>
+</head>
+<body>
+
+    <h2>Perhitungan Bangun Datar dengan JavaScript</h2>
+
+    <script>
+
+
+    // Fungsi untuk menghitung luas persegi
+    // parameter: sisi
+    // rumus: sisi × sisi
+    function luasPersegi(sisi){
+        return sisi * sisi;
+    }
+
+
+    // Fungsi untuk menghitung keliling persegi
+    // parameter: sisi
+    // rumus: 4 × sisi
+    function kelilingPersegi(sisi){
+        return 4 * sisi;
+    }
+
+
+    // Fungsi untuk menghitung luas segitiga
+    // parameter: alas dan tinggi
+    // rumus: 1/2 × alas × tinggi
+    function luasSegitiga(alas, tinggi){
+        return 0.5 * alas * tinggi;
+    }
+
+
+    // nilai parameter
+    let sisi = 5;
+    let alas = 10;
+    let tinggi = 6;
+
+
+    // menampilkan hasil ke halaman web
+    document.write("Sisi persegi: " + sisi + "<br>");
+    document.write("Luas persegi: " + luasPersegi(sisi) + "<br>");
+    document.write("Keliling persegi: " + kelilingPersegi(sisi) + "<br><br>");
+
+    document.write("Alas segitiga: " + alas + "<br>");
+    document.write("Tinggi segitiga: " + tinggi + "<br>");
+    document.write("Luas segitiga: " + luasSegitiga(alas, tinggi));
+
+    </script>
+
+</body>
+</html>
