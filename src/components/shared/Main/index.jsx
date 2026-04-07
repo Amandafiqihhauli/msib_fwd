@@ -1,4 +1,23 @@
+import { useState } from "react";
+import books from "../../../utils/books";
+
+
 export default function Main() {
+
+  const [bookList, setBookList] = useState(books);
+
+  const addBook = () => {
+    const newBook = {
+      id: bookList.length + 1,
+      title: "New Book",
+      author: "Unknown Author",
+      year: 2024,
+      description: "This is a new book added to the list.",
+      image: "https://via.placeholder.com/150"
+    };
+    setBookList([...bookList, newBook]);
+  };
+
     return (
 
         <>
@@ -30,163 +49,51 @@ export default function Main() {
           <section className="py-5 bg-body-tertiary">
             <div className="container">
 
+              <h2 className="text-center mb-4">
+                Total Books: {bookList.length}
+              </h2>
+
+
+              <div className="text-center mb-4">
+                <button className="btn btn-success" onClick={addBook}>
+                  Add Book
+                </button>
+              </div>
+
+
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
-                {/* PRODUCT 1 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
+                  {bookList.map((book) => (
+                    <div className="col" key={book.id}>
+                      <div className="card shadow-sm h-100">
 
-                    <div className="card-body">
-                      <h5 className="card-title">Atomic Habits</h5>
-                      <p className="card-text">
-                        Buku karya James Clear tentang bagaimana perubahan kecil
-                        dalam kebiasaan sehari-hari dapat menghasilkan hasil yang
-                        luar biasa dalam jangka panjang.
-                      </p>
+                        <img 
+                          src={book.image}
+                          className="card-img-top"
+                          height="300"
+                          style={{objectFit:"cover"}}
+                        />
 
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
+                        <div className="card-body">
+                          <h5 className="card-title">{book.title}</h5>
+
+                          <p className="card-text">
+                            {book.description}
+                          </p>
+
+                          <p>Author: {book.author}</p>
+                          <p>Year: {book.year}</p>
+
+                          <div className="btn-group">
+                            <button className="btn btn-sm btn-outline-primary me-2">View</button>
+                            <button className="btn btn-sm btn-outline-secondary">Edit</button>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
-                  </div>
-                </div>
+                  ))}
 
-                {/* PRODUCT 2 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/71UwSHSZRnS.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
-
-                    <div className="card-body">
-                      <h5 className="card-title">Rich Dad Poor Dad</h5>
-                      <p className="card-text">
-                        Buku finansial terkenal karya Robert Kiyosaki yang
-                        mengajarkan perbedaan pola pikir orang kaya dan orang
-                        miskin dalam mengelola uang dan investasi.
-                      </p>
-
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PRODUCT 3 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
-
-                    <div className="card-body">
-                      <h5 className="card-title">The Psychology of Money</h5>
-                      <p className="card-text">
-                        Buku karya Morgan Housel yang menjelaskan bagaimana
-                        perilaku manusia mempengaruhi cara kita mengelola uang
-                        dan membuat keputusan finansial.
-                      </p>
-
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PRODUCT 4 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
-
-                    <div className="card-body">
-                      <h5 className="card-title">Think and Grow Rich</h5>
-                      <p className="card-text">
-                        Buku klasik pengembangan diri oleh Napoleon Hill
-                        yang membahas mindset sukses, motivasi, dan cara
-                        mencapai kekayaan melalui pola pikir yang benar.
-                      </p>
-
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PRODUCT 5 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/71tbalAHYCL.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
-
-                    <div className="card-body">
-                      <h5 className="card-title">Deep Work</h5>
-                      <p className="card-text">
-                        Buku karya Cal Newport yang menjelaskan pentingnya
-                        fokus mendalam untuk menghasilkan pekerjaan berkualitas
-                        tinggi di era penuh distraksi.
-                      </p>
-
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PRODUCT 6 */}
-                <div className="col">
-                  <div className="card shadow-sm h-100">
-                    <img 
-                      src="https://images-na.ssl-images-amazon.com/images/I/71-4MkLN5jL.jpg"
-                      className="card-img-top"
-                      height="300"
-                      style={{objectFit:"cover"}}
-                    />
-
-                    <div className="card-body">
-                      <h5 className="card-title">Start With Why</h5>
-                      <p className="card-text">
-                        Buku karya Simon Sinek yang mengajarkan bahwa
-                        pemimpin hebat selalu memulai dengan "mengapa"
-                        untuk menginspirasi orang lain.
-                      </p>
-
-                      <div className="btn-group">
-                        <button className="btn btn-sm btn-outline-primary me-2">View</button>
-                        <button className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
               </div>
 
